@@ -1,0 +1,16 @@
+function autoStock() {
+const buyRate = 0.6;
+const sellRate = 1.0;
+var M = Game.ObjectsById[5].minigame;
+for(var id = 0; id <= 16; id++) {
+var me = M.goodsById[id];
+var stdValue = (id + 1) * 10 + 10;
+var value = M.getGoodPrice(me);
+if(value <= stdValue * buyRate && me.stock < M.getGoodMaxStock(me)) {
+M.buyGood(id, 10000);　　
+} else if(value >= stdValue * sellRate && me.stock > 0) {
+M.sellGood(id, 10000);
+}
+}
+}
+setInterval(function() {autoStock();}, 59000);
