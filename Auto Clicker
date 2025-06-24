@@ -1,0 +1,12 @@
+(() => {
+  const messageName = 'zero-timeout-message';
+
+  function clickCookieForce() {
+    Game.lastClick = 0;
+    Game.ClickCookie();
+    window.postMessage(messageName, '*');
+  }
+
+  window.addEventListener('message', clickCookieForce, true);
+  window.postMessage(messageName, '*');
+})();
